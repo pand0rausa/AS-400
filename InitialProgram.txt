@@ -66,3 +66,11 @@ The system value QSTRUPPGM (System Start-Up Program)
 
   CHGUSRPRF USRPRF(<PROFILE>) INLPGM(LIBRARY/PROGRAM)
   CHGUSRPRF USRPRF(qsecofr) INLPGM(QGPL/CLPGM)              ***Requires *SECADM permissions to change *****
+
+
+
+
+
+
+  The PASE for i "system" utility runs a CL command.
+  Example > system ANZDFTPWD
