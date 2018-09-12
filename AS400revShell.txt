@@ -1,6 +1,6 @@
 # Rev shell for AS/400 that will require a EBCDIC compatiable listener on the other end.
-  QSH (requires EBCDIC translation)
-  PACE (is all ASCII)
+  QShell (requires EBCDIC translation) To access QShell run the QSH command.
+  PASE (is all ASCII)-The PASE for i default shell (/QOpenSys/usr/bin/sh) is the Korn shell. To access PASE for i shells and utilities, you can call the Run an i5/OS Terminal Session (QP2TERM) program. 
     
   cd /QOpenSys/QIBM/ProdData/DeveloperTools/perl/bin
  
