@@ -1,6 +1,7 @@
 # Rev shell for AS/400 that will require a EBCDIC compatiable listener on the other end.
-  QSH
-
+  QSH (requires EBCDIC translation)
+  PACE (is all ASCII)
+    
   cd /QOpenSys/QIBM/ProdData/DeveloperTools/perl/bin
  
 # The lines are broken up this way so each line fits since it won't wrap properly.
